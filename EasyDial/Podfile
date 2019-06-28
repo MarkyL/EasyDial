@@ -8,5 +8,7 @@ target 'EasyDial' do
   # Pods for EasyDial
 
 pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'GoogleSignIn'
 
 end
