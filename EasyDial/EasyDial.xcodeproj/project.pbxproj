@@ -1,0 +1,323 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CFC0F1B022C613D100557041 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC0F1AF22C613D100557041 /* AppDelegate.swift */; };
+		CFC0F1B222C613D100557041 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC0F1B122C613D100557041 /* ViewController.swift */; };
+		CFC0F1B522C613D100557041 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFC0F1B322C613D100557041 /* Main.storyboard */; };
+		CFC0F1B822C613D100557041 /* EasyDial.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CFC0F1B622C613D100557041 /* EasyDial.xcdatamodeld */; };
+		CFC0F1BA22C613D200557041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC0F1B922C613D200557041 /* Assets.xcassets */; };
+		CFC0F1BD22C613D200557041 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFC0F1BB22C613D200557041 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CFC0F1AC22C613D100557041 /* EasyDial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyDial.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFC0F1AF22C613D100557041 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CFC0F1B122C613D100557041 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CFC0F1B422C613D100557041 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CFC0F1B722C613D100557041 /* EasyDial.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyDial.xcdatamodel; sourceTree = "<group>"; };
+		CFC0F1B922C613D200557041 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CFC0F1BC22C613D200557041 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CFC0F1BE22C613D200557041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CFC0F1A922C613D100557041 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CFC0F1A322C613D100557041 = {
+			isa = PBXGroup;
+			children = (
+				CFC0F1AE22C613D100557041 /* EasyDial */,
+				CFC0F1AD22C613D100557041 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CFC0F1AD22C613D100557041 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFC0F1AC22C613D100557041 /* EasyDial.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CFC0F1AE22C613D100557041 /* EasyDial */ = {
+			isa = PBXGroup;
+			children = (
+				CFC0F1AF22C613D100557041 /* AppDelegate.swift */,
+				CFC0F1B122C613D100557041 /* ViewController.swift */,
+				CFC0F1B322C613D100557041 /* Main.storyboard */,
+				CFC0F1B922C613D200557041 /* Assets.xcassets */,
+				CFC0F1BB22C613D200557041 /* LaunchScreen.storyboard */,
+				CFC0F1BE22C613D200557041 /* Info.plist */,
+				CFC0F1B622C613D100557041 /* EasyDial.xcdatamodeld */,
+			);
+			path = EasyDial;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CFC0F1AB22C613D100557041 /* EasyDial */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFC0F1C122C613D200557041 /* Build configuration list for PBXNativeTarget "EasyDial" */;
+			buildPhases = (
+				CFC0F1A822C613D100557041 /* Sources */,
+				CFC0F1A922C613D100557041 /* Frameworks */,
+				CFC0F1AA22C613D100557041 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyDial;
+			productName = EasyDial;
+			productReference = CFC0F1AC22C613D100557041 /* EasyDial.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CFC0F1A422C613D100557041 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Omri Ohayon";
+				TargetAttributes = {
+					CFC0F1AB22C613D100557041 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = CFC0F1A722C613D100557041 /* Build configuration list for PBXProject "EasyDial" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CFC0F1A322C613D100557041;
+			productRefGroup = CFC0F1AD22C613D100557041 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CFC0F1AB22C613D100557041 /* EasyDial */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CFC0F1AA22C613D100557041 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFC0F1BD22C613D200557041 /* LaunchScreen.storyboard in Resources */,
+				CFC0F1BA22C613D200557041 /* Assets.xcassets in Resources */,
+				CFC0F1B522C613D100557041 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CFC0F1A822C613D100557041 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFC0F1B222C613D100557041 /* ViewController.swift in Sources */,
+				CFC0F1B822C613D100557041 /* EasyDial.xcdatamodeld in Sources */,
+				CFC0F1B022C613D100557041 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CFC0F1B322C613D100557041 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFC0F1B422C613D100557041 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CFC0F1BB22C613D200557041 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFC0F1BC22C613D200557041 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CFC0F1BF22C613D200557041 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CFC0F1C022C613D200557041 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CFC0F1C222C613D200557041 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EasyDial/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mycompany.EasyDial;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CFC0F1C322C613D200557041 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = EasyDial/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mycompany.EasyDial;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CFC0F1A722C613D100557041 /* Build configuration list for PBXProject "EasyDial" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFC0F1BF22C613D200557041 /* Debug */,
+				CFC0F1C022C613D200557041 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFC0F1C122C613D200557041 /* Build configuration list for PBXNativeTarget "EasyDial" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFC0F1C222C613D200557041 /* Debug */,
+				CFC0F1C322C613D200557041 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CFC0F1B622C613D100557041 /* EasyDial.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CFC0F1B722C613D100557041 /* EasyDial.xcdatamodel */,
+			);
+			currentVersion = CFC0F1B722C613D100557041 /* EasyDial.xcdatamodel */;
+			path = EasyDial.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CFC0F1A422C613D100557041 /* Project object */;
+}
