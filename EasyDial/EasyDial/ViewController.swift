@@ -9,13 +9,13 @@
 import UIKit
 import GoogleSignIn
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GIDSignInUIDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        // initial commit
-        // mark's testing commit also
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,11 +24,5 @@ class ViewController: UIViewController {
     }
 
 
-    override func viewDidAppear(_ animated: Bool) {
-        self.performSegue(withIdentifier: "loginView", sender: self);
-    }
-    
-    
-    
 }
 
