@@ -24,5 +24,11 @@ class ViewController: UIViewController {
     }
 
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.performSegue(withIdentifier: "loginView", sender: self);
+    }
+    
+    
+    
 }
 
