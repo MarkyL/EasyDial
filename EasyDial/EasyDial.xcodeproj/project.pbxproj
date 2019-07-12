@@ -14,6 +14,7 @@
 		CFC0F1B822C613D100557041 /* EasyDial.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CFC0F1B622C613D100557041 /* EasyDial.xcdatamodeld */; };
 		CFC0F1BA22C613D200557041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC0F1B922C613D200557041 /* Assets.xcassets */; };
 		CFC0F1BD22C613D200557041 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFC0F1BB22C613D200557041 /* LaunchScreen.storyboard */; };
+		D5DF6B7F22D8A5D300E6F709 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DF6B7E22D8A5D300E6F709 /* LoginViewController.swift */; };
 		D5E17F6D22C628410084908B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D5E17F6C22C628410084908B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		CFC0F1B922C613D200557041 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFC0F1BC22C613D200557041 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFC0F1BE22C613D200557041 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5DF6B7E22D8A5D300E6F709 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D5E17F6C22C628410084908B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 				CFC0F1BB22C613D200557041 /* LaunchScreen.storyboard */,
 				CFC0F1BE22C613D200557041 /* Info.plist */,
 				CFC0F1B622C613D100557041 /* EasyDial.xcdatamodeld */,
+				D5DF6B7E22D8A5D300E6F709 /* LoginViewController.swift */,
 			);
 			path = EasyDial;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5DF6B7F22D8A5D300E6F709 /* LoginViewController.swift in Sources */,
 				CFC0F1B222C613D100557041 /* ViewController.swift in Sources */,
 				CFC0F1B822C613D100557041 /* EasyDial.xcdatamodeld in Sources */,
 				CFC0F1B022C613D100557041 /* AppDelegate.swift in Sources */,

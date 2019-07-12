@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -24,9 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         GIDSignIn.sharedInstance()?.clientID =
                     "862528374545-ur57pc89an5fsv8ha9au3u2sqv6kslrn.apps.googleusercontent.com"
-            //"com.apps.googleusercontent.com.apps.862528374545-ur57pc89an5fsv8ha9au3u2sqv6kslrn"
-                    //"862528374545-ur57pc89an5fsv8ha9au3u2sqv6kslrn.apps.googleusercontent.com"
-            //FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance()?.delegate = self
         
         return true
@@ -52,6 +48,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let email = user.profile.email
             // ...
             print("userId - {0}, email - {1}", userId ?? "emptyID", email ?? "emptyMail")
+            
+            
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+            
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if let error = error {
+                    print("\(error.localizedDescription)")
+                    return
+                }
+                print("User is signed in!!!")
+                UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                
+                let userDataDict:[String: GIDGoogleUser] = ["user": user]
+                NotificationCenter.default.post(name: NSNotification.Name("UserLoggedIn"), object: nil, userInfo: userDataDict)
+
+            }
         }
     }
     

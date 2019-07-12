@@ -28,7 +28,7 @@
         <!--Login-->
         <scene sceneID="CtN-QT-95e">
             <objects>
-                <viewController title="Login" id="TK2-mD-sgg" sceneMemberID="viewController">
+                <viewController title="Login" id="TK2-mD-sgg" customClass="LoginViewController" customModule="EasyDial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ATh-UU-MsS"/>
                         <viewControllerLayoutGuide type="bottom" id="L4d-Zm-1mq"/>
@@ -37,17 +37,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQA-U5-Qxt">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDN-0S-tFK" customClass="GIDSignInButton">
+                                <rect key="frame" x="67" y="182" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Login"/>
-                                <connections>
-                                    <segue destination="hkc-dl-qLn" kind="show" id="0Ws-3m-uYU"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="hkc-dl-qLn" kind="presentation" identifier="mainView" id="yg2-2s-qhn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rk3-nt-um1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,6 +71,16 @@
                                 <state key="normal" title="Company"/>
                                 <connections>
                                     <segue destination="yXl-2V-4si" kind="show" id="MMW-Md-fch"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBS-Ip-4Sn">
+                                <rect key="frame" x="311" y="629" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLogoutClicked:" destination="hkc-dl-qLn" eventType="touchUpInside" id="OV2-95-Pt4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -108,6 +118,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="a2i-U4-awZ"/>
         <segue reference="bTE-oL-cdl"/>
-        <segue reference="0Ws-3m-uYU"/>
+        <segue reference="yg2-2s-qhn"/>
     </inferredMetricsTieBreakers>
 </document>
