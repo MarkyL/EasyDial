@@ -39,8 +39,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             print("onUserLoggedin , user email = {0}", email ?? "emptyMail")
         }
         
-        
-        self.performSegue(withIdentifier: "mainView", sender: self)
+        dismiss(animated: true, completion: nil)
     }
     
 }

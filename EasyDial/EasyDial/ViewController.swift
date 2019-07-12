@@ -47,7 +47,9 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         do {
             try firebaseAuth.signOut()
             UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+            
             self.performSegue(withIdentifier: "loginView", sender: self)
+            
         } catch let signOutError as NSError {
             print ("Error signing out : %@", signOutError)
         }
