@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		73B377A5CBFD26232722ADCD /* Pods_EasyDial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81A28206F6B6BF77A0AA9DC /* Pods_EasyDial.framework */; };
+		CF269E8822D9D6D900E6593D /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF269E8722D9D6D900E6593D /* Company.swift */; };
+		CF269E8A22D9D8E100E6593D /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF269E8922D9D8E100E6593D /* Branch.swift */; };
 		CFC0F1B022C613D100557041 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC0F1AF22C613D100557041 /* AppDelegate.swift */; };
 		CFC0F1B222C613D100557041 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC0F1B122C613D100557041 /* ViewController.swift */; };
 		CFC0F1B522C613D100557041 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFC0F1B322C613D100557041 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 		1BD95810C191CA5606FDBCD7 /* Pods-EasyDial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyDial.release.xcconfig"; path = "Target Support Files/Pods-EasyDial/Pods-EasyDial.release.xcconfig"; sourceTree = "<group>"; };
 		22D80D82071074E3E2CBED52 /* Pods-EasyDial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyDial.debug.xcconfig"; path = "Target Support Files/Pods-EasyDial/Pods-EasyDial.debug.xcconfig"; sourceTree = "<group>"; };
 		A81A28206F6B6BF77A0AA9DC /* Pods_EasyDial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyDial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF269E8722D9D6D900E6593D /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		CF269E8922D9D8E100E6593D /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		CFC0F1AC22C613D100557041 /* EasyDial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyDial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC0F1AF22C613D100557041 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFC0F1B122C613D100557041 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF269E8622D9D65300E6593D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF269E8722D9D6D900E6593D /* Company.swift */,
+				CF269E8922D9D8E100E6593D /* Branch.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		CFC0F1A322C613D100557041 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +97,7 @@
 		CFC0F1AE22C613D100557041 /* EasyDial */ = {
 			isa = PBXGroup;
 			children = (
+				CF269E8622D9D65300E6593D /* Model */,
 				CFC0F1AF22C613D100557041 /* AppDelegate.swift */,
 				CFC0F1B122C613D100557041 /* ViewController.swift */,
 				CFC0F1B322C613D100557041 /* Main.storyboard */,
@@ -174,15 +188,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-EasyDial-checkManifestLockResult.txt",
 			);
@@ -241,8 +251,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5DF6B7F22D8A5D300E6F709 /* LoginViewController.swift in Sources */,
+				CF269E8A22D9D8E100E6593D /* Branch.swift in Sources */,
 				CFC0F1B222C613D100557041 /* ViewController.swift in Sources */,
 				CFC0F1B822C613D100557041 /* EasyDial.xcdatamodeld in Sources */,
+				CF269E8822D9D6D900E6593D /* Company.swift in Sources */,
 				CFC0F1B022C613D100557041 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
