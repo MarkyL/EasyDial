@@ -30,7 +30,7 @@ struct Branch{
         guard
         let value = snapshot.value as? [String: AnyObject],
         let number = value["number"] as? String,
-        let isVerified = value["verified"] as? Bool
+        let isVerified = value["isVerified"] as? Bool
         else {
             return nil
         }

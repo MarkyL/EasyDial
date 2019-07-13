@@ -18,6 +18,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
         //GIDSignIn.sharedInstance()?.signIn()
         NotificationCenter.default.addObserver(self, selector: #selector(onUserLoggedIn(_:)), name: NSNotification.Name("UserLoggedIn"), object: nil)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

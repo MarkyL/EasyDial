@@ -12,7 +12,9 @@ import Firebase
 
 class ViewController: UIViewController, GIDSignInUIDelegate {
     
-    var ref : DatabaseReference?
+    var companyRef : DatabaseReference?
+    
+    var handle : DatabaseHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +24,21 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onUserLoggedIn(_:)), name: NSNotification.Name("UserLoggedIn"), object: nil)
         
-        ref = Database.database().reference(withPath: "companies")
+        companyRef = Database.database().reference(withPath: "companies")
         
-
+        
+        
+        companyRef?.observe(.value, with: { snapshot in
+            var newCompanies : [Company] = []
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                    let companyItem = Company(snapshot: snapshot) {
+                    newCompanies.append(companyItem)
+                }
+            }
+            
+            print("Fetched companies = {0} ", newCompanies)
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,10 +70,12 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         branches.append(customerBranch)
         let company = Company(imageStr: "img", branches: branches)
         
-        if let companyRef = self.ref?.child("markomri"){
+        if let cRef = self.companyRef?.child("test"){
             let c = company.toAnyObject()
-            companyRef.setValue(c)
+            cRef.setValue(c)
         }
+        
+        
         
     }
     @IBAction func onLogoutClicked(_ sender: Any) {

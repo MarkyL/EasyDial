@@ -39,7 +39,7 @@ struct Company{
         self.name = snapshot.key
         self.imageStr = imageStr
         
-        if let branches = value["branches"] as? DataSnapshot {
+        if let branches = snapshot.childSnapshot(forPath: "branches") as? DataSnapshot {
             for child in branches.children {
                 if let snapshot = child as? DataSnapshot,
                     let branch = Branch(snapshot: snapshot) {
