@@ -14,6 +14,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     
     var companyRef : DatabaseReference?
     
+    @IBOutlet weak var imageView: UIImageView!
+    
     var handle : DatabaseHandle?
     
     override func viewDidLoad() {
@@ -38,7 +40,34 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
             }
             
             print("Fetched companies = {0} ", newCompanies)
+            
+            let url = URL(string: newCompanies[0].imageStr)!
+            self.downloadImage(from: url)
         })
+    }
+    
+    func downloadImage(from url: URL) {
+        print("Download Started, {0}", generateCurrentTimeStamp())
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download Finished, {0}", self.generateCurrentTimeStamp())
+            
+            DispatchQueue.main.async() {
+                self.imageView.image = UIImage(data: data)
+                print("self.imageView is set, {0}", self.generateCurrentTimeStamp())
+            }
+        }
+    }
+    
+    func generateCurrentTimeStamp () -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy_MM_dd_hh_mm_ss"
+        return (formatter.string(from: Date()) as NSString) as String
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 
     override func didReceiveMemoryWarning() {
