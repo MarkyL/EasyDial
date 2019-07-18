@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g5g-YM-GTh">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G22010" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g5g-YM-GTh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,7 +56,7 @@
         <!--Home-->
         <scene sceneID="e2K-J0-ac8">
             <objects>
-                <viewController title="Home" id="hkc-dl-qLn" customClass="ViewController" customModule="EasyDial" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Home" id="hkc-dl-qLn" customClass="HomeViewController" customModule="EasyDial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OZY-m1-TXa"/>
                         <viewControllerLayoutGuide type="bottom" id="qmM-6O-GOi"/>
@@ -65,43 +65,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sd-1r-6IA">
-                                <rect key="frame" x="139" y="318" width="97" height="30"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0H5-n7-R36">
+                                <rect key="frame" x="40" y="121" width="296" height="470"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Company"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FOB-1A-DJB">
+                                    <size key="itemSize" width="89" height="95"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Cuh-0M-Ooj" customClass="MyCollectionViewCell" customModule="EasyDial" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="89" height="95"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="89" height="95"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SVg-kS-JqH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="89" height="95"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="myImageView" destination="SVg-kS-JqH" id="Cvh-M7-jCy"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
-                                    <segue destination="yXl-2V-4si" kind="show" id="MMW-Md-fch"/>
+                                    <outlet property="dataSource" destination="hkc-dl-qLn" id="RfT-c2-j0u"/>
+                                    <outlet property="delegate" destination="hkc-dl-qLn" id="tmy-wQ-c6P"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBS-Ip-4Sn">
-                                <rect key="frame" x="311" y="629" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="onLogoutClicked:" destination="hkc-dl-qLn" eventType="touchUpInside" id="OV2-95-Pt4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBL-j8-qEx">
-                                <rect key="frame" x="105" y="280" width="164" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Company"/>
-                                <connections>
-                                    <action selector="onAddClicked:" destination="hkc-dl-qLn" eventType="touchUpInside" id="UrU-nL-tmO"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uPT-A7-0Yf">
-                                <rect key="frame" x="16" y="366" width="343" height="255"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="9R4-Fe-hhz"/>
                     <connections>
-                        <outlet property="imageView" destination="uPT-A7-0Yf" id="fFp-4o-Z9I"/>
-                        <segue destination="yXl-2V-4si" kind="show" id="bTE-oL-cdl"/>
+                        <outlet property="myCollectionView" destination="0H5-n7-R36" id="g8x-Ha-fE4"/>
+                        <segue destination="yXl-2V-4si" kind="show" identifier="specificCompany" id="bTE-oL-cdl"/>
                         <segue destination="TK2-mD-sgg" kind="presentation" identifier="loginView" id="a2i-U4-awZ"/>
                     </connections>
                 </viewController>
@@ -112,7 +116,7 @@
         <!--Company-->
         <scene sceneID="7TC-Pd-Chf">
             <objects>
-                <viewController title="Company" id="yXl-2V-4si" sceneMemberID="viewController">
+                <viewController title="Company" id="yXl-2V-4si" customClass="CompanyViewController" customModule="EasyDial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NI1-vN-jWv"/>
                         <viewControllerLayoutGuide type="bottom" id="W5z-pz-I7p"/>
@@ -120,17 +124,24 @@
                     <view key="view" contentMode="scaleToFill" id="c06-Yi-LHp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vEH-x3-Ros">
+                                <rect key="frame" x="124" y="101" width="126" height="117"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="headerImageView" destination="vEH-x3-Ros" id="0R1-Zx-oer"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="do1-a3-hXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12" y="-672"/>
+            <point key="canvasLocation" x="-12" y="-672.41379310344837"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="a2i-U4-awZ"/>
-        <segue reference="bTE-oL-cdl"/>
         <segue reference="yg2-2s-qhn"/>
     </inferredMetricsTieBreakers>
 </document>

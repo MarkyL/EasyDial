@@ -14,14 +14,16 @@ struct Company{
     let ref : DatabaseReference?
     let name : String
     let imageStr : String
+    let mainBranch : String
     var branches : [Branch] = []
     
     
-    init(name : String = "" , imageStr : String , branches: [Branch] ) {
+    init(name : String = "" , imageStr : String , mainBranch: String, branches: [Branch] ) {
         
         self.ref = nil
         self.name = name
         self.imageStr = imageStr
+        self.mainBranch = mainBranch
         self.branches = branches
         
     }
@@ -30,7 +32,8 @@ struct Company{
     init?(snapshot: DataSnapshot){
         guard
             let value = snapshot.value as? [String: AnyObject],
-            let imageStr = value["imageStr"] as? String
+            let imageStr = value["imageStr"] as? String,
+            let mainBranch = value["mainBranch"] as? String
             else {
                 return nil
         }
@@ -38,6 +41,7 @@ struct Company{
         self.ref = snapshot.ref
         self.name = snapshot.key
         self.imageStr = imageStr
+        self.mainBranch = mainBranch
         
         if let branches = snapshot.childSnapshot(forPath: "branches") as? DataSnapshot {
             for child in branches.children {
@@ -52,6 +56,7 @@ struct Company{
     func toAnyObject() -> Any {
         
         return ["imageStr" : imageStr ,
+                "mainBranch" : mainBranch,
                 "branches" : getBranches()]
     }
     
