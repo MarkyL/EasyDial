@@ -160,6 +160,7 @@
 				TargetAttributes = {
 					CFC0F1AB22C613D100557041 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9CCTFCQ9NU;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -395,6 +396,7 @@
 			baseConfigurationReference = 22D80D82071074E3E2CBED52 /* Pods-EasyDial.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9CCTFCQ9NU;
 				INFOPLIST_FILE = EasyDial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mycompany.EasyDial;
@@ -408,6 +410,7 @@
 			baseConfigurationReference = 1BD95810C191CA5606FDBCD7 /* Pods-EasyDial.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9CCTFCQ9NU;
 				INFOPLIST_FILE = EasyDial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mycompany.EasyDial;

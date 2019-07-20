@@ -11,7 +11,7 @@ import UIKit
 import GoogleSignIn
 import Firebase
 
-class CompanyViewController: UIViewController {
+class CompanyViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
     
     @IBOutlet weak var headerImageView: UIImageView!
     
@@ -25,6 +25,19 @@ class CompanyViewController: UIViewController {
             downloadImage(from: url)
         }
         
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (self.company?.branches.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        
+        cell.textLabel?.text = company?.branches[indexPath.item].name
+        
+        return cell
         
     }
     
