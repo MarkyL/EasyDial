@@ -148,9 +148,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RV1-1R-Izo">
+                                                    <rect key="frame" x="311" y="8" width="24" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="myImageView" destination="RV1-1R-Izo" id="koO-Aa-OMy"/>
                                             <outlet property="myLabel" destination="Ji9-qh-jFp" id="UfQ-Io-gcI"/>
                                         </connections>
                                     </tableViewCell>
