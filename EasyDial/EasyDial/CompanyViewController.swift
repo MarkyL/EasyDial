@@ -20,7 +20,6 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         if company != nil {
-            print("received company with values - {0}",self.company ?? "NO COMPANY")
             let url = URL(string: (self.company?.imageStr)!)!
             downloadImage(from: url)
         }
@@ -56,11 +55,16 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        let cell = MyTableViewCell(style: .default, reuseIdentifier: "tableCell")
         
-        cell.textLabel?.text = company?.branches[indexPath.item].name
+        let branch = company?.branches[indexPath.item]
+        cell.myLabel.text = branch!.name
+        cell.myImageView.image = UIImage(named: "ic_favorite")
         
         return cell
+    }
+    
+    func isFavoriteBranch(branch: Branch) {
         
     }
     
