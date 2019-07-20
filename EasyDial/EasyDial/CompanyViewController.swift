@@ -15,7 +15,7 @@ class CompanyViewController: UIViewController {
     
     @IBOutlet weak var headerImageView: UIImageView!
     
-    var company : Company?
+    var company : Company!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,29 @@ class CompanyViewController: UIViewController {
             downloadImage(from: url)
         }
         
-        
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(onTapHeaderBranch))
+        headerImageView.isUserInteractionEnabled = true
+        headerImageView.addGestureRecognizer(singleTap)
+    }
+    
+    //Action
+    @objc func onTapHeaderBranch() {
+        callNumber(phoneNumber: company.mainBranch)
+    }
+    
+    private func onTapSpecificBranch(branchIndex : Int) {
+        let branchNumber = company.branches[branchIndex].number
+        callNumber(phoneNumber: company.mainBranch + branchNumber)
+    }
+    
+    private func callNumber(phoneNumber:String) {
+        print("callNumber called with - " + phoneNumber)
+        if let phoneCallURL:NSURL = NSURL(string:"tel://\(phoneNumber)") {
+            let application:UIApplication = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL as URL)) {
+                application.openURL(phoneCallURL as URL);
+            }
+        }
     }
     
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
