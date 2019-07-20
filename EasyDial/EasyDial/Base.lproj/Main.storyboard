@@ -134,7 +134,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="ru3-pG-RVh" customClass="MyTableViewCell" customModule="EasyDial" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellTableView" id="ru3-pG-RVh" customClass="MyTableViewCell" customModule="EasyDial" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ru3-pG-RVh" id="x5K-0M-Fy9">
@@ -170,6 +170,7 @@
                     </view>
                     <connections>
                         <outlet property="headerImageView" destination="vEH-x3-Ros" id="0R1-Zx-oer"/>
+                        <outlet property="tableView" destination="OAN-jd-9rj" id="cbG-hA-uQ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="do1-a3-hXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
