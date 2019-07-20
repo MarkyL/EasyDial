@@ -64,6 +64,10 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        onTapSpecificBranch(branchIndex: indexPath.item)
+    }
+    
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }

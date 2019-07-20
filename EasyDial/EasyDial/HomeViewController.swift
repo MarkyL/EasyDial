@@ -42,6 +42,7 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
         
         
         companyRef?.observe(.value, with: { snapshot in
+            self.companies.removeAll()
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
                     let companyItem = Company(snapshot: snapshot) {

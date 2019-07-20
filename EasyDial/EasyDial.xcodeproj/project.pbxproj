@@ -13,6 +13,7 @@
 		CF269E8D22E0A4E500E6593D /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF269E8C22E0A4E500E6593D /* MyCollectionViewCell.swift */; };
 		CF269E8F22E0C7B100E6593D /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF269E8E22E0C7B100E6593D /* CompanyViewController.swift */; };
 		CF269E9122E0CBE200E6593D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF269E9022E0CBE200E6593D /* HomeViewController.swift */; };
+		CF269E9522E32AAC00E6593D /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF269E9422E32AAC00E6593D /* MyTableViewCell.swift */; };
 		CFC0F1B022C613D100557041 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC0F1AF22C613D100557041 /* AppDelegate.swift */; };
 		CFC0F1B522C613D100557041 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFC0F1B322C613D100557041 /* Main.storyboard */; };
 		CFC0F1B822C613D100557041 /* EasyDial.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CFC0F1B622C613D100557041 /* EasyDial.xcdatamodeld */; };
@@ -31,6 +32,7 @@
 		CF269E8C22E0A4E500E6593D /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF269E8E22E0C7B100E6593D /* CompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
 		CF269E9022E0CBE200E6593D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CF269E9422E32AAC00E6593D /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		CFC0F1AC22C613D100557041 /* EasyDial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyDial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC0F1AF22C613D100557041 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFC0F1B422C613D100557041 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				D5DF6B7E22D8A5D300E6F709 /* LoginViewController.swift */,
 				CF269E8C22E0A4E500E6593D /* MyCollectionViewCell.swift */,
 				CF269E8E22E0C7B100E6593D /* CompanyViewController.swift */,
+				CF269E9422E32AAC00E6593D /* MyTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				CF269E8A22D9D8E100E6593D /* Branch.swift in Sources */,
 				CF269E8F22E0C7B100E6593D /* CompanyViewController.swift in Sources */,
 				CF269E9122E0CBE200E6593D /* HomeViewController.swift in Sources */,
+				CF269E9522E32AAC00E6593D /* MyTableViewCell.swift in Sources */,
 				CFC0F1B822C613D100557041 /* EasyDial.xcdatamodeld in Sources */,
 				CF269E8822D9D6D900E6593D /* Company.swift in Sources */,
 				CFC0F1B022C613D100557041 /* AppDelegate.swift in Sources */,
