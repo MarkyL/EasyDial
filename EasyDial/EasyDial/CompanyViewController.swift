@@ -42,6 +42,7 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     
     private func callNumber(phoneNumber:String) {
         print("callNumber called with - " + phoneNumber)
+
         if let phoneCallURL:NSURL = NSURL(string:"tel://\(phoneNumber)") {
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL as URL)) {
