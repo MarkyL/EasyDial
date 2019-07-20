@@ -62,14 +62,30 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:MyTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cellTableView") as! MyTableViewCell
-        cell.myLabel.text = branch!.name
-        cell.myImageView.image = UIImage(named: "ic_favorite")
 
+        let branch = company?.branches[indexPath.item]
+        cell.myLabel.text = branch!.name
+        
+        cell.myImageView.image = isFavoriteBranch(branch: branch!) ?
+            UIImage(named: "ic_favorite") : UIImage(named: "ic_unfavorite")
+        
+        cell.myImageView.isUserInteractionEnabled = true
+        cell.myImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onFavoriteClicked)))
+        cell.myImageView.tag = indexPath.item
+        
         return cell
     }
     
-    func isFavoriteBranch(branch: Branch) {
-        
+    // TODO : setting cell image has to be on the main thread , currently it's delayed!
+    func onFavoriteClicked(gesture : UITapGestureRecognizer) {
+        print("onFavoriteClicked")
+        let cellImage = gesture.view! as! UIImageView
+        let branchIndex = cellImage.tag
+        cellImage.image = UIImage(named: "ic_favorite")
+    }
+    
+    func isFavoriteBranch(branch: Branch) -> Bool {
+        return false
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
