@@ -50,24 +50,18 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
                 }
             }
             
-            print("Fetched companies = {0} ", self.companies)
             self.myCollectionView.reloadData()
         })
     }
     
     func downloadImage(from url: URL , cell: MyCollectionViewCell) {
-        print("Download Started url:, {0}", url)
-        print("Download Started, {0}", generateCurrentTimeStamp())
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished, {0}", self.generateCurrentTimeStamp())
-            
+
             DispatchQueue.main.async() {
                 let image = UIImage(data: data)
                 cell.myImageView.image = image
                 cell.myImageView.contentMode = .scaleAspectFit
-                print("self.imageView is set, {0}", self.generateCurrentTimeStamp())
             }
         }
     }
@@ -174,7 +168,6 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? CompanyViewController {
             vc.company = self.companies[chosenCompanyIndex]
-            print("sent company with values - {0}",self.companies[chosenCompanyIndex])
         }
     }
     
