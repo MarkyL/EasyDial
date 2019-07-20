@@ -15,15 +15,21 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     
     @IBOutlet weak var headerImageView: UIImageView!
     
+    @IBOutlet weak var tableView: UITableView!
+    
     var company : Company!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if company != nil {
             print("received company with values - {0}",self.company ?? "NO COMPANY")
             let url = URL(string: (self.company?.imageStr)!)!
             downloadImage(from: url)
         }
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(onTapHeaderBranch))
         headerImageView.isUserInteractionEnabled = true
@@ -56,9 +62,9 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        
-        cell.textLabel?.text = company?.branches[indexPath.item].name
+        let cell:MyTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cellTableView") as! MyTableViewCell
+
+        cell.myLabel?.text = company?.branches[indexPath.item].name
         
         return cell
         
