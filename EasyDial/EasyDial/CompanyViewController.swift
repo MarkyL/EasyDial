@@ -19,6 +19,8 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     
     var company : Company!
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,11 +83,19 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         print("onFavoriteClicked")
         let cellImage = gesture.view! as! UIImageView
         let branchIndex = cellImage.tag
-        cellImage.image = UIImage(named: "ic_favorite")
+        let isFav = isFavoriteBranch(branch: company.branches[branchIndex])
+        cellImage.image = isFav ? UIImage(named: "ic_unfavorite") : UIImage(named: "ic_favorite")
+        defaults.set(!isFav, forKey: company.name+"_"+company.branches[branchIndex].name)
+        
+    }
+    
+    func onFliterFavoriteClicked(gesture : UITapGestureRecognizer) {
+        print("onFliterFavoriteClicked")
+
     }
     
     func isFavoriteBranch(branch: Branch) -> Bool {
-        return false
+        return defaults.bool(forKey: company.name+"_"+branch.name)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -49,7 +49,6 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
                     self.companies.append(companyItem)
                 }
             }
-            
             self.myCollectionView.reloadData()
         })
     }
@@ -141,6 +140,7 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         let url = URL(string: self.companies[indexPath.item].imageStr)!
+
         self.downloadImage(from: url,cell: cell)
         
         cell.layer.borderColor = UIColor.black.cgColor
