@@ -142,7 +142,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lorem ipsum dolorem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ji9-qh-jFp">
-                                                    <rect key="frame" x="15" y="5" width="288" height="32"/>
+                                                    <rect key="frame" x="15" y="5" width="231" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -152,11 +152,16 @@
                                                     <rect key="frame" x="296" y="1" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_unverified" translatesAutoresizingMaskIntoConstraints="NO" id="3fU-Yd-awK">
+                                                    <rect key="frame" x="254" y="1" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="myImageView" destination="RV1-1R-Izo" id="koO-Aa-OMy"/>
                                             <outlet property="myLabel" destination="Ji9-qh-jFp" id="UfQ-Io-gcI"/>
+                                            <outlet property="verifiedImg" destination="3fU-Yd-awK" id="Iwn-yU-ZB7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -180,6 +185,7 @@
     </scenes>
     <resources>
         <image name="ic_unfavorite" width="48" height="48"/>
+        <image name="ic_unverified" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yg2-2s-qhn"/>
