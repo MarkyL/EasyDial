@@ -114,7 +114,9 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         self.isFilterFavorite = !self.isFilterFavorite
         
         if self.isFilterFavorite{
-            favoriteFilterImageView.image = UIImage(named: "ic_favorite_filter")
+            DispatchQueue.main.async() {
+                self.favoriteFilterImageView.image = UIImage(named: "ic_favorite_filter")
+            }
             branchesToPresent.removeAll()
             for branch in company.branches{
                 if isFavoriteBranch(branch:branch) {
@@ -124,7 +126,9 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
             }
             
         }else{
-            favoriteFilterImageView.image = UIImage(named: "ic_unfavorite_filter")
+            DispatchQueue.main.async() {
+                self.favoriteFilterImageView.image = UIImage(named: "ic_unfavorite_filter")
+            }
             branchesToPresent.removeAll()
             branchesToPresent = company.branches
         }
