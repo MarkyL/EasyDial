@@ -68,6 +68,9 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         let branch = company?.branches[indexPath.item]
         cell.myLabel.text = branch!.name
         
+        cell.verifiedImg.image = branch!.isVerified ?
+            UIImage(named: "ic_verified") : UIImage(named: "ic_unverified")
+        
         cell.myImageView.image = isFavoriteBranch(branch: branch!) ?
             UIImage(named: "ic_favorite") : UIImage(named: "ic_unfavorite")
         
@@ -83,8 +86,13 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         print("onFavoriteClicked")
         let cellImage = gesture.view! as! UIImageView
         let branchIndex = cellImage.tag
+
         let isFav = isFavoriteBranch(branch: company.branches[branchIndex])
-        cellImage.image = isFav ? UIImage(named: "ic_unfavorite") : UIImage(named: "ic_favorite")
+        
+        DispatchQueue.main.async() {
+            cellImage.image = isFav ? UIImage(named: "ic_unfavorite") : UIImage(named: "ic_favorite")
+        }
+        
         defaults.set(!isFav, forKey: company.name+"_"+company.branches[branchIndex].name)
         
     }
