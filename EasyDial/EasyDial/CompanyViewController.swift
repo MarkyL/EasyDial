@@ -21,8 +21,9 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     
     var company : Company!
     
+    var isAdmin : Bool = false
+
     var branchesToPresent : [Branch] = []
-    
     var isFilterFavorite = false
     
     let defaults = UserDefaults.standard
@@ -41,6 +42,9 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         let headerBranchTap = UITapGestureRecognizer(target: self, action: #selector(onTapHeaderBranch))
         headerImageView.isUserInteractionEnabled = true
         headerImageView.addGestureRecognizer(headerBranchTap)
+        
+        isAdmin = defaults.bool(forKey: "isAdmin")
+        print("isAdmin = " + isAdmin.description)
         
         let favoriteFilterTap = UITapGestureRecognizer(target: self, action: #selector(onFliterFavoriteClicked))
         favoriteFilterImageView.isUserInteractionEnabled = true
@@ -93,7 +97,6 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         return cell
     }
     
-    // TODO : setting cell image has to be on the main thread , currently it's delayed!
     func onFavoriteClicked(gesture : UITapGestureRecognizer) {
         print("onFavoriteClicked")
         let cellImage = gesture.view! as! UIImageView
@@ -106,7 +109,6 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         }
         
         defaults.set(!isFav, forKey: company.name+"_"+company.branches[branchIndex].name)
-        
     }
     
     func onFliterFavoriteClicked(gesture : UITapGestureRecognizer) {
@@ -153,8 +155,6 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     }
     
     func downloadImage(from url: URL) {
-        print("Download Started url:, {0}", url)
-
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
             print(response?.suggestedFilename ?? url.lastPathComponent)
