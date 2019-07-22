@@ -19,6 +19,8 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     
     var company : Company!
     
+    var isAdmin : Bool = false
+    
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -35,6 +37,9 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(onTapHeaderBranch))
         headerImageView.isUserInteractionEnabled = true
         headerImageView.addGestureRecognizer(singleTap)
+        
+        isAdmin = defaults.bool(forKey: "isAdmin")
+        print("isAdmin = " + isAdmin.description)
     }
     
     //Action
@@ -115,8 +120,6 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     }
     
     func downloadImage(from url: URL) {
-        print("Download Started url:, {0}", url)
-
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
             print(response?.suggestedFilename ?? url.lastPathComponent)

@@ -49,6 +49,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             // ...
             print("userId - {0}, email - {1}", userId ?? "emptyID", email ?? "emptyMail")
             
+            Database.database().reference(withPath: "admins").child(userId!).observeSingleEvent(of: .value,
+                with: { (snapshot) in
+                    let value = snapshot.value as? String
+                    print("value = " + (value ?? "default value"))
+                    if value == email {
+                        UserDefaults.standard.set(true, forKey: "isAdmin")
+                        print("An admin user has logged in")
+                    }
+                })
             
             guard let authentication = user.authentication else { return }
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
