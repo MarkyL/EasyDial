@@ -15,11 +15,16 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     
     @IBOutlet weak var headerImageView: UIImageView!
     
+    @IBOutlet weak var favoriteFilterImageView: UIImageView!
+    
     @IBOutlet weak var tableView: UITableView!
     
     var company : Company!
     
     var isAdmin : Bool = false
+
+    var branchesToPresent : [Branch] = []
+    var isFilterFavorite = false
     
     let defaults = UserDefaults.standard
     
@@ -34,12 +39,18 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(onTapHeaderBranch))
+        let headerBranchTap = UITapGestureRecognizer(target: self, action: #selector(onTapHeaderBranch))
         headerImageView.isUserInteractionEnabled = true
-        headerImageView.addGestureRecognizer(singleTap)
+        headerImageView.addGestureRecognizer(headerBranchTap)
         
         isAdmin = defaults.bool(forKey: "isAdmin")
         print("isAdmin = " + isAdmin.description)
+        
+        let favoriteFilterTap = UITapGestureRecognizer(target: self, action: #selector(onFliterFavoriteClicked))
+        favoriteFilterImageView.isUserInteractionEnabled = true
+        favoriteFilterImageView.addGestureRecognizer(favoriteFilterTap)
+        
+        branchesToPresent = company.branches
     }
     
     //Action
@@ -64,19 +75,19 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.company?.branches.count)!
+        return (self.branchesToPresent.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:MyTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cellTableView") as! MyTableViewCell
 
-        let branch = company?.branches[indexPath.item]
-        cell.myLabel.text = branch!.name
+        let branch = self.branchesToPresent[indexPath.item]
+        cell.myLabel.text = branch.name
         
-        cell.verifiedImg.image = branch!.isVerified ?
+        cell.verifiedImg.image = branch.isVerified ?
             UIImage(named: "ic_verified") : UIImage(named: "ic_unverified")
         
-        cell.myImageView.image = isFavoriteBranch(branch: branch!) ?
+        cell.myImageView.image = isFavoriteBranch(branch: branch) ?
             UIImage(named: "ic_favorite") : UIImage(named: "ic_unfavorite")
         
         cell.myImageView.isUserInteractionEnabled = true
@@ -86,7 +97,6 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         return cell
     }
     
-    // TODO : setting cell image has to be on the main thread , currently it's delayed!
     func onFavoriteClicked(gesture : UITapGestureRecognizer) {
         print("onFavoriteClicked")
         let cellImage = gesture.view! as! UIImageView
@@ -99,17 +109,38 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         }
         
         defaults.set(!isFav, forKey: company.name+"_"+company.branches[branchIndex].name)
-        
     }
     
     func onFliterFavoriteClicked(gesture : UITapGestureRecognizer) {
         print("onFliterFavoriteClicked")
+        self.isFilterFavorite = !self.isFilterFavorite
+        
+        if self.isFilterFavorite{
+            favoriteFilterImageView.image = UIImage(named: "ic_favorite_filter")
+            branchesToPresent.removeAll()
+            for branch in company.branches{
+                if isFavoriteBranch(branch:branch) {
+                    //Means this branch is our favorite
+                    branchesToPresent.append(branch)
+                }
+            }
+            
+        }else{
+            favoriteFilterImageView.image = UIImage(named: "ic_unfavorite_filter")
+            branchesToPresent.removeAll()
+            branchesToPresent = company.branches
+        }
+
+        
+        self.tableView.reloadData()
 
     }
     
     func isFavoriteBranch(branch: Branch) -> Bool {
         return defaults.bool(forKey: company.name+"_"+branch.name)
     }
+    
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         onTapSpecificBranch(branchIndex: indexPath.item)
