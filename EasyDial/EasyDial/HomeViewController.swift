@@ -12,7 +12,7 @@ import UIKit
 import GoogleSignIn
 import Firebase
 
-class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionViewDataSource, UICollectionViewDelegate{
+class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionViewDataSource, UICollectionViewDelegate , UISearchBarDelegate{
     
     let reuseIdentifier = "cell" // also enter this string as the cell identifier in the storyboard
     
@@ -21,11 +21,16 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
     //    @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var myCollectionView: UICollectionView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var handle : DatabaseHandle?
     
     var chosenCompanyIndex : Int = -1
     
     var companies : [Company] = []
+    
+    var companiesToPresent : [Company] = []
     
     
     
@@ -49,8 +54,11 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
                     self.companies.append(companyItem)
                 }
             }
+            
+            self.companiesToPresent = self.companies
             self.myCollectionView.reloadData()
         })
+        
     }
     
     func downloadImage(from url: URL , cell: MyCollectionViewCell) {
@@ -129,7 +137,7 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.companies.count
+        return self.companiesToPresent.count
     }
     
     // make a cell for each cell index path
@@ -139,7 +147,7 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MyCollectionViewCell
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        let url = URL(string: self.companies[indexPath.item].imageStr)!
+        let url = URL(string: self.companiesToPresent[indexPath.item].imageStr)!
 
         self.downloadImage(from: url,cell: cell)
         
@@ -167,10 +175,30 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? CompanyViewController {
-            vc.company = self.companies[chosenCompanyIndex]
+            vc.company = self.companiesToPresent[chosenCompanyIndex]
         }
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            companiesToPresent = companies
+        }else{
+            companiesToPresent = companies.filter({$0.name.contains(searchText)})
+        }
+        
+        self.myCollectionView.reloadData()
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        if searchBar.text != ""{
+            searchBar.text = ""
+            companiesToPresent = companies
+            self.myCollectionView.reloadData()
+        }
+        
+    }
     
     
     
