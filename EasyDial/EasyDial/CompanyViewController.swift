@@ -13,6 +13,8 @@ import Firebase
 
 class CompanyViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
     
+    let COMPANY_BRANCH_DELIMITER = "_"
+    
     @IBOutlet weak var headerImageView: UIImageView!
     
     @IBOutlet weak var favoriteFilterImageView: UIImageView!
@@ -31,26 +33,38 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if company != nil {
-            let url = URL(string: (self.company?.imageStr)!)!
-            downloadImage(from: url)
-        }
+        downloadAndShowCompanyLogo()
         
         tableView.delegate = self
         tableView.dataSource = self
         
+        initTapRecognizers()
+        isAdmin = defaults.bool(forKey: "isAdmin")
+        branchesToPresent = company.branches
+    }
+    
+    func downloadAndShowCompanyLogo() {
+        if company != nil {
+            let url = URL(string: (self.company?.imageStr)!)!
+            downloadImage(from: url)
+        }
+    }
+    
+    func initTapRecognizers() {
+        initHeaderTapRecognizer()
+        initFavFilterTapRecognizer()
+    }
+    
+    func initHeaderTapRecognizer() {
         let headerBranchTap = UITapGestureRecognizer(target: self, action: #selector(onTapHeaderBranch))
         headerImageView.isUserInteractionEnabled = true
         headerImageView.addGestureRecognizer(headerBranchTap)
-        
-        isAdmin = defaults.bool(forKey: "isAdmin")
-        print("isAdmin = " + isAdmin.description)
-        
+    }
+    
+    func initFavFilterTapRecognizer() {
         let favoriteFilterTap = UITapGestureRecognizer(target: self, action: #selector(onFliterFavoriteClicked))
         favoriteFilterImageView.isUserInteractionEnabled = true
         favoriteFilterImageView.addGestureRecognizer(favoriteFilterTap)
-        
-        branchesToPresent = company.branches
     }
     
     //Action
@@ -84,17 +98,47 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         let branch = self.branchesToPresent[indexPath.item]
         cell.myLabel.text = branch.name
         
-        cell.verifiedImg.image = branch.isVerified ?
-            UIImage(named: "ic_verified") : UIImage(named: "ic_unverified")
+        if isAdmin {
+            handleAdminCellBehavior(verifiedImg: cell.verifiedImg, branchIndex: indexPath.item)
+        }
         
-        cell.myImageView.image = isFavoriteBranch(branch: branch) ?
-            UIImage(named: "ic_favorite") : UIImage(named: "ic_unfavorite")
+        handleFavoriteBehavior(favoriteImg: cell.myImageView, branchIndex: indexPath.item)
         
-        cell.myImageView.isUserInteractionEnabled = true
-        cell.myImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onFavoriteClicked)))
-        cell.myImageView.tag = indexPath.item
         
         return cell
+    }
+    
+    func handleAdminCellBehavior(verifiedImg : UIImageView, branchIndex : Int) {
+        verifiedImg.image = self.branchesToPresent[branchIndex].isVerified ?
+            UIImage(named: "ic_verified") : UIImage(named: "ic_unverified")
+        
+        verifiedImg.isUserInteractionEnabled = true
+        verifiedImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onVerifyClicked)))
+        verifiedImg.tag = branchIndex
+    }
+    
+    func handleFavoriteBehavior(favoriteImg : UIImageView, branchIndex : Int) {
+        favoriteImg.image = isFavoriteBranch(branch: self.branchesToPresent[branchIndex]) ?
+            UIImage(named: "ic_favorite") : UIImage(named: "ic_unfavorite")
+        
+        favoriteImg.isUserInteractionEnabled = true
+        favoriteImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onFavoriteClicked)))
+        favoriteImg.tag = branchIndex
+    }
+    
+    func onVerifyClicked(gesture : UITapGestureRecognizer) {
+        print("onVerifyClicked")
+        let verifyImage = gesture.view! as! UIImageView
+        let branch = company.branches[verifyImage.tag]
+        
+        let isVerified = branch.isVerified
+        
+        DispatchQueue.main.async() {
+            verifyImage.image = isVerified ? UIImage(named: "ic_unverified") : UIImage(named: "ic_verified")
+        }
+        
+        Database.database().reference(withPath: "companies").child(company.name).child("branches")
+            .child(branch.name).updateChildValues(["isVerified" : !isVerified])
     }
     
     func onFavoriteClicked(gesture : UITapGestureRecognizer) {
@@ -108,7 +152,7 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
             cellImage.image = isFav ? UIImage(named: "ic_unfavorite") : UIImage(named: "ic_favorite")
         }
         
-        defaults.set(!isFav, forKey: company.name+"_"+company.branches[branchIndex].name)
+        defaults.set(!isFav, forKey: company.name + COMPANY_BRANCH_DELIMITER + company.branches[branchIndex].name)
     }
     
     func onFliterFavoriteClicked(gesture : UITapGestureRecognizer) {
@@ -141,10 +185,8 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     }
     
     func isFavoriteBranch(branch: Branch) -> Bool {
-        return defaults.bool(forKey: company.name+"_"+branch.name)
+        return defaults.bool(forKey: company.name + COMPANY_BRANCH_DELIMITER + branch.name)
     }
-    
-
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         onTapSpecificBranch(branchIndex: indexPath.item)
@@ -157,14 +199,11 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     func downloadImage(from url: URL) {
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-
             
             DispatchQueue.main.async() {
                 let image = UIImage(data: data)
                 self.headerImageView.image = image
                 self.headerImageView.contentMode = .scaleAspectFit
-
             }
         }
     }
