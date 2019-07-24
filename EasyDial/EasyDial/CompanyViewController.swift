@@ -28,6 +28,8 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     var isAdmin : Bool = false
 
     var branchesToPresent : [Branch] = []
+    
+    var favBranchesToPresent : [Branch] = []
     var isFilterFavorite = false
     
     let defaults = UserDefaults.standard
@@ -175,6 +177,8 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
                 }
             }
             
+            favBranchesToPresent = branchesToPresent
+            
         }else{
             DispatchQueue.main.async() {
                 self.favoriteFilterImageView.image = UIImage(named: "ic_unfavorite_filter")
@@ -213,7 +217,9 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
+        if self.isFilterFavorite && searchText == "" {
+            branchesToPresent = favBranchesToPresent
+        }else if searchText == "" {
             branchesToPresent = company.branches
         }else{
             branchesToPresent = company.branches.filter({$0.name.contains(searchText)})
