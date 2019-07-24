@@ -11,9 +11,11 @@ import UIKit
 import GoogleSignIn
 import Firebase
 
-class CompanyViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
+class CompanyViewController: UIViewController , UITableViewDelegate , UITableViewDataSource , UISearchBarDelegate{
     
     let COMPANY_BRANCH_DELIMITER = "_"
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var headerImageView: UIImageView!
     
@@ -100,6 +102,8 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
         
         if isAdmin {
             handleAdminCellBehavior(verifiedImg: cell.verifiedImg, branchIndex: indexPath.item)
+        } else {
+            cell.verifiedImg.isHidden = true
         }
         
         handleFavoriteBehavior(favoriteImg: cell.myImageView, branchIndex: indexPath.item)
@@ -206,5 +210,15 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
                 self.headerImageView.contentMode = .scaleAspectFit
             }
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            branchesToPresent = company.branches
+        }else{
+            branchesToPresent = company.branches.filter({$0.name.contains(searchText)})
+        }
+        
+        self.tableView.reloadData()
     }
 }

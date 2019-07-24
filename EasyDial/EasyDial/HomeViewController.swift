@@ -152,7 +152,7 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
         self.downloadImage(from: url,cell: cell)
         
         cell.layer.borderColor = UIColor.black.cgColor
-        cell.layer.borderWidth = 1
+        cell.layer.borderWidth = 2
         cell.layer.cornerRadius = 8
         
         return cell
@@ -188,21 +188,5 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
         
         self.myCollectionView.reloadData()
     }
-    
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-        if searchBar.text != ""{
-            searchBar.text = ""
-            companiesToPresent = companies
-            self.myCollectionView.reloadData()
-        }
-        
-    }
-    
-    
-    
-    
-    
     
 }
