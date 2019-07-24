@@ -18,6 +18,8 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
     
     var companyRef : DatabaseReference?
     
+    var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    
     //    @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var myCollectionView: UICollectionView!
@@ -44,7 +46,7 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
         
         companyRef = Database.database().reference(withPath: "companies")
         
-        
+        initiateProgressBar()
         
         companyRef?.observe(.value, with: { snapshot in
             self.companies.removeAll()
@@ -57,6 +59,7 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
             
             self.companiesToPresent = self.companies
             self.myCollectionView.reloadData()
+            self.indicator.stopAnimating()
         })
         
     }
@@ -158,6 +161,15 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
         return cell
     }
     
+    
+    func initiateProgressBar(){
+        indicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        indicator.center = view.center
+        self.view.addSubview(indicator)
+        self.view.bringSubview(toFront: indicator)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        indicator.startAnimating()
+    }
     // MARK: - UICollectionViewDelegate protocol
     
     
