@@ -135,13 +135,16 @@ class CompanyViewController: UIViewController , UITableViewDelegate , UITableVie
     func onVerifyClicked(gesture : UITapGestureRecognizer) {
         print("onVerifyClicked")
         let verifyImage = gesture.view! as! UIImageView
-        let branch = company.branches[verifyImage.tag]
+        var branch = company.branches[verifyImage.tag]
         
         let isVerified = branch.isVerified
+
         
         DispatchQueue.main.async() {
             verifyImage.image = isVerified ? UIImage(named: "ic_unverified") : UIImage(named: "ic_verified")
         }
+        
+        company.branches[verifyImage.tag].isVerified = !isVerified
         
         Database.database().reference(withPath: "companies").child(company.name).child("branches")
             .child(branch.name).updateChildValues(["isVerified" : !isVerified])
