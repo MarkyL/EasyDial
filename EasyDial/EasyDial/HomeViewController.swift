@@ -20,8 +20,6 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
     
     var indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     
-    //    @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var myCollectionView: UICollectionView!
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -34,11 +32,8 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
     
     var companiesToPresent : [Company] = []
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         GIDSignIn.sharedInstance().uiDelegate = self
         
@@ -61,7 +56,6 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
             self.myCollectionView.reloadData()
             self.indicator.stopAnimating()
         })
-        
     }
     
     func downloadImage(from url: URL , cell: MyCollectionViewCell) {
@@ -101,42 +95,10 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
         }
     }
     
-    
-    
     public func onUserLoggedIn(_ notification: NSNotification) {
         print("onuserloggedin main viewcontroller")
         
     }
-    
-    //    @IBAction func onAddClicked(_ sender: Any) {
-    //
-    //        var branches : [Branch] = []
-    //        let ordersBranch = Branch(name: "Orders", number: "05412341,2", isVerified: false)
-    //        let customerBranch = Branch(name: "Customer", number: "05412341,2", isVerified: false)
-    //        branches.append(ordersBranch)
-    //        branches.append(customerBranch)
-    //        let company = Company(imageStr: "img", branches: branches)
-    //
-    //        if let cRef = self.companyRef?.child("test"){
-    //            let c = company.toAnyObject()
-    //            cRef.setValue(c)
-    //        }
-    //    }
-    //    @IBAction func onLogoutClicked(_ sender: Any) {
-    //        let firebaseAuth = Auth.auth()
-    //        do {
-    //            try firebaseAuth.signOut()
-    //            UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
-    //
-    //            self.performSegue(withIdentifier: "loginView", sender: self)
-    //
-    //        } catch let signOutError as NSError {
-    //            print ("Error signing out : %@", signOutError)
-    //        }
-    //    }
-    
-    
-    // MARK: - UICollectionViewDataSource protocol
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -145,7 +107,6 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
     
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MyCollectionViewCell
         
@@ -161,7 +122,6 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
         return cell
     }
     
-    
     func initiateProgressBar(){
         indicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         indicator.center = view.center
@@ -170,10 +130,7 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         indicator.startAnimating()
     }
-    // MARK: - UICollectionViewDelegate protocol
-    
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
@@ -181,9 +138,7 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
         self.chosenCompanyIndex  = indexPath.item
         
         self.performSegue(withIdentifier: "specificCompany", sender: self)
-        
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? CompanyViewController {
@@ -194,11 +149,9 @@ class HomeViewController: UIViewController, GIDSignInUIDelegate , UICollectionVi
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             companiesToPresent = companies
-        }else{
+        } else{
             companiesToPresent = companies.filter({$0.name.contains(searchText)})
         }
-        
         self.myCollectionView.reloadData()
     }
-    
 }
