@@ -17,14 +17,11 @@ struct Branch{
     var isVerified : Bool
     
     init(name : String = "" , number : String , isVerified : Bool) {
-        
         self.ref = nil
         self.name = name
         self.number = number
         self.isVerified = isVerified
-        
     }
-    
     
     init?(snapshot: DataSnapshot){
         guard
@@ -39,14 +36,11 @@ struct Branch{
         self.name = snapshot.key
         self.number = number
         self.isVerified = isVerified
-        
     }
-
     
     func toAnyObject()->Any{
         return ["number" : number,
                 "isVerified" : isVerified]
     }
-    
-    
+
 }

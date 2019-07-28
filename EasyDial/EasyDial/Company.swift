@@ -19,15 +19,12 @@ struct Company{
     
     
     init(name : String = "" , imageStr : String , mainBranch: String, branches: [Branch] ) {
-        
         self.ref = nil
         self.name = name
         self.imageStr = imageStr
         self.mainBranch = mainBranch
         self.branches = branches
-        
     }
-    
     
     init?(snapshot: DataSnapshot){
         guard
@@ -54,21 +51,17 @@ struct Company{
     }
     
     func toAnyObject() -> Any {
-        
         return ["imageStr" : imageStr ,
                 "mainBranch" : mainBranch,
                 "branches" : getBranches()]
     }
     
     func getBranches() -> Any {
-        
         var branches  = [String:Any]()
         for branch in self.branches {
             branches[branch.name] = branch.toAnyObject()
         }
         
         return branches
-    }
-    
-    
+    }    
 }
