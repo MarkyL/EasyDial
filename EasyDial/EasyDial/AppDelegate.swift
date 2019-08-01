@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        
         GIDSignIn.sharedInstance()?.clientID =
                     "862528374545-ur57pc89an5fsv8ha9au3u2sqv6kslrn.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self
@@ -40,13 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             print("\(error.localizedDescription)")
         } else {
             // Perform any operations on signed in user here.
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
+            let userId = user.userID
             let email = user.profile.email
-            // ...
             print("userId - {0}, email - {1}", userId ?? "emptyID", email ?? "emptyMail")
             
             Database.database().reference(withPath: "admins").child(userId!).observeSingleEvent(of: .value,

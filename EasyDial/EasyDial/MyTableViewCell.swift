@@ -10,10 +10,7 @@ import UIKit
 
 class MyTableViewCell: UITableViewCell {
     
-
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var verifiedImg: UIImageView!
-    
     @IBOutlet weak var myLabel: UILabel!
-
 }

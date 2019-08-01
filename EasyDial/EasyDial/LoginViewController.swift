@@ -13,25 +13,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        GIDSignIn.sharedInstance().uiDelegate = self
-        //GIDSignIn.sharedInstance()?.signIn()
-        NotificationCenter.default.addObserver(self, selector: #selector(onUserLoggedIn(_:)), name: NSNotification.Name("UserLoggedIn"), object: nil)
-        
-        
-    }
-    
 
+        GIDSignIn.sharedInstance().uiDelegate = self
+
+        NotificationCenter.default.addObserver(self, selector: #selector(onUserLoggedIn(_:)), name: NSNotification.Name("UserLoggedIn"), object: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        
     }
     
     public func onUserLoggedIn(_ notification: NSNotification) {
@@ -42,8 +32,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             let email = user.profile.email
             print("onUserLoggedin , user email = {0}", email ?? "emptyMail")
         }
-        
         dismiss(animated: true, completion: nil)
     }
-    
+
 }
